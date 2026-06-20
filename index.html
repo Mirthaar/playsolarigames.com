@@ -31,11 +31,13 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ── Typography helpers ── */
     .mono {
       font-family: 'Courier New', 'Lucida Console', Courier, monospace;
       letter-spacing: 0.1em;
     }
 
+    /* ── Header ── */
     header {
       display: flex;
       align-items: center;
@@ -72,6 +74,7 @@
     }
     .header-contact:hover { color: var(--primary); }
 
+    /* ── Hero ── */
     .hero {
       display: flex;
       flex-direction: column;
@@ -109,6 +112,7 @@
       margin-bottom: 60px;
     }
 
+    /* ── App card ── */
     .app-card {
       display: flex;
       align-items: center;
@@ -168,12 +172,14 @@
     }
     .app-store-btn:hover { opacity: 0.88; }
 
+    /* ── Divider ── */
     .divider {
       height: 1px;
       background: var(--border);
       margin: 0 48px;
     }
 
+    /* ── About section ── */
     .about {
       max-width: 660px;
       margin: 96px auto;
@@ -204,6 +210,7 @@
       max-width: 560px;
     }
 
+    /* ── Footer ── */
     footer {
       display: flex;
       align-items: center;
@@ -237,6 +244,7 @@
     }
     .footer-links a:hover { color: var(--primary); }
 
+    /* ── Mobile ── */
     @media (max-width: 600px) {
       header         { padding: 20px 24px; }
       .divider       { margin: 0 24px; }
