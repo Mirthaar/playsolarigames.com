@@ -1,37 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solari Games</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solari Games — Independent Mobile Game Studio</title>
+  <meta name="description" content="Solari Games LLC — independent mobile game studio. Creators of Shift, a daily word puzzle game for iOS." />
+  <meta property="og:title" content="Solari Games" />
+  <meta property="og:description" content="Independent mobile game studio. Creators of Shift, a daily word puzzle for iOS." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://playsolarigames.com" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg:      #0D0C0A;
+      --panel:   #161410;
+      --primary: #E8E4DC;
+      --accent:  #C98A1A;
+      --dim:     #6B6560;
+      --border:  rgba(232, 228, 220, 0.08);
+      --border-accent: rgba(201, 138, 26, 0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background: #0d0d0d;
-      color: #e8d5a0;
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      background: var(--bg);
+      color: var(--primary);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono {
+      font-family: 'Courier New', 'Lucida Console', Courier, monospace;
+      letter-spacing: 0.1em;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+      text-decoration: none;
+    }
+    .logo-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+    .logo-dot {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .header-contact {
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .header-contact:hover { color: var(--primary); }
+
+    .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 110px 24px 80px;
     }
+
     .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      color: #7a7060;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 8vw, 68px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.04;
+      color: var(--primary);
       margin-bottom: 20px;
     }
-    h1 {
-      font-size: 40px;
-      font-weight: 500;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
     }
-    .tagline {
-      font-size: 13px;
-      color: #5a5248;
-      letter-spacing: 0.1em;
-      marg
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--dim);
+      max-width: 420px;
+      line-height: 1.65;
+      margin-bottom: 60px;
+    }
+
+    .app-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--panel);
+      border: 1px solid var(--border-accent);
+      padding: 22px 28px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .app-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--bg);
+      font-style: italic;
+      letter-spacing: -2px;
+    }
+
+    .app-info { text-align: left; flex: 1; }
+
+    .app-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2px;
+      letter-spacing: -0.01em;
+    }
+
+    .app-tagline {
+      font-family: 'Courier New', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--dim);
+      margin-bottom: 14px;
+    }
+
+    .app-store-btn {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 8px 14px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .app-store-btn:hover { opacity: 0.88; }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 48px;
+    }
+
+    .about {
+      max-width: 660px;
+      margin: 96px auto;
+      padding: 0 32px;
+    }
+
+    .section-label {
+      font-family: 'Courier New', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--dim);
+      margin-bottom: 18px;
+    }
+
+    .about h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--primary);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .about p {
+      font-size: 16px;
+      color: var(--dim);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 28px 48px;
+      border-top: 1px solid var(--border);
+      margin-top: 96px;
+    }
+
+    .footer-org {
+      font-family: 'Courier New', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-family: 'Courier New', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--primary); }
+
+    @media (max-width: 600px) {
+      header         { padding: 20px 24px; }
+      .divider       { margin: 0 24px; }
+      footer         { padding: 24px; flex-direction: column; align-items: flex-start; }
+      .hero          { padding: 80px 24px 60px; }
+      .footer-links  { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo">
+      <span class="logo-name">Solari Games</span><span class="logo-dot">.</span>
+    </a>
+    <a href="mailto:info@playsolarigames.com" class="header-contact mono">CONTACT</a>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <p class="eyebrow mono">INDEPENDENT MOBILE GAME STUDIO</p>
+      <h1>Games worth<br>coming back to<em>.</em></h1>
+      <p class="hero-sub">
+        We build daily puzzle games for iOS — designed to fit in your day, not take it over.
+      </p>
+
+      <div class="app-card">
+        <div class="app-icon">S</div>
+        <div class="app-info">
+          <div class="app-name">Shift</div>
+          <div class="app-tagline mono">DAILY WORD PUZZLE &nbsp;·&nbsp; IOS</div>
+          <!-- Replace href with live App Store link before launch -->
+          <a href="#" class="app-store-btn mono">COMING TO APP STORE &nbsp;→</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="about">
+      <p class="section-label mono">ABOUT SOLARI GAMES</p>
+      <h2>Small studio.<br>Thoughtful games.</h2>
+      <p>
+        Solari Games LLC is an independent mobile game studio based in the United States.
+        We focus on daily puzzle experiences that respect your time, reward clear thinking,
+        and give you a reason to open the app every morning.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <span class="footer-org mono">© 2025 SOLARI GAMES LLC</span>
+    <div class="footer-links">
+      <a href="https://shiftwordpuzzle.com/privacy-policy" class="mono">PRIVACY POLICY</a>
+      <a href="mailto:info@playsolarigames.com" class="mono">info@playsolarigames.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
